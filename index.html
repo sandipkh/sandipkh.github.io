@@ -1,10 +1,362 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My GitHub Page</title>
-  </head>
-  <body>
-    <h1>Hello!</h1>
-    <p>Welcome to my page.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Name — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f7f5f2;
+      --ink: #1a1916;
+      --muted: #8a8780;
+      --line: #dedad5;
+      --accent: #c8a96e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Mono', monospace;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── Layout ── */
+    .container { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .container {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── Hero ── */
+    #hero {
+      padding: 10rem 0 6rem;
+      border-bottom: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.9s ease forwards 0.2s;
+    }
+    .hero-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--muted);
+    }
+    .hero-sub {
+      max-width: 460px;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.5; }
+
+    /* ── Sections ── */
+    section { padding: 5rem 0; border-bottom: 1px solid var(--line); }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── About ── */
+    .about-text { color: var(--muted); max-width: 560px; }
+    .about-text p + p { margin-top: 1rem; }
+    .skills {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    .skill-tag {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    /* ── Projects ── */
+    .projects-grid { display: flex; flex-direction: column; gap: 0; }
+    .project-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: start;
+      gap: 1.5rem;
+      padding: 1.8rem 0;
+      border-top: 1px solid var(--line);
+      text-decoration: none;
+      color: inherit;
+      transition: opacity 0.2s;
+    }
+    .project-item:hover { opacity: 0.6; }
+    .project-num {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      padding-top: 3px;
+    }
+    .project-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 300;
+    }
+    .project-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+    .project-tag {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+      padding-top: 4px;
+    }
+
+    /* ── Contact ── */
+    .contact-text { color: var(--muted); max-width: 460px; margin-bottom: 2rem; }
+    .contact-link {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+    .contact-link:hover { opacity: 0.4; }
+
+    /* ── Social ── */
+    .social-links {
+      display: flex; gap: 2rem; flex-wrap: wrap;
+      padding: 3rem 0;
+    }
+    .social-links a {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .social-links a:hover { color: var(--ink); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 2rem 0;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: none; }
+    }
+    .fade-in {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 540px) {
+      .project-item { grid-template-columns: 1fr; gap: 0.4rem; }
+      .project-num { display: none; }
+      nav .nav-links { gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="container">
+      <a class="nav-logo" href="#">Your Name</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <p class="hero-label">Portfolio — 2025</p>
+      <h1>Designer,<br><em>developer &</em><br>creator.</h1>
+      <p class="hero-sub">I build thoughtful digital experiences at the intersection of design and technology. Based in your city.</p>
+      <a class="hero-cta" href="#projects">View work →</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container fade-in">
+      <p class="section-label">About</p>
+      <h2>A little about me</h2>
+      <div class="about-text">
+        <p>Hi, I'm <strong>Your Name</strong> — a [your role] with a passion for clean, purposeful work. I believe great design is felt before it's seen.</p>
+        <p>I've worked with startups and established teams alike, turning complex problems into elegant, user-centered solutions. When I'm not building, I'm reading, sketching, or exploring the outdoors.</p>
+      </div>
+      <div class="skills">
+        <span class="skill-tag">HTML / CSS</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">UI Design</span>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">Node.js</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container fade-in">
+      <p class="section-label">Projects</p>
+      <h2>Selected work</h2>
+      <div class="projects-grid">
+
+        <a class="project-item" href="#">
+          <span class="project-num">01</span>
+          <div>
+            <div class="project-title">Project One</div>
+            <div class="project-desc">A short description of what this project does and why it matters.</div>
+          </div>
+          <span class="project-tag">Web App</span>
+        </a>
+
+        <a class="project-item" href="#">
+          <span class="project-num">02</span>
+          <div>
+            <div class="project-title">Project Two</div>
+            <div class="project-desc">A short description of what this project does and why it matters.</div>
+          </div>
+          <span class="project-tag">Design</span>
+        </a>
+
+        <a class="project-item" href="#">
+          <span class="project-num">03</span>
+          <div>
+            <div class="project-title">Project Three</div>
+            <div class="project-desc">A short description of what this project does and why it matters.</div>
+          </div>
+          <span class="project-tag">Open Source</span>
+        </a>
+
+        <a class="project-item" href="#">
+          <span class="project-num">04</span>
+          <div>
+            <div class="project-title">Project Four</div>
+            <div class="project-desc">A short description of what this project does and why it matters.</div>
+          </div>
+          <span class="project-tag">Tool</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container fade-in">
+      <p class="section-label">Contact</p>
+      <h2>Let's work together</h2>
+      <p class="contact-text">Have a project in mind or just want to say hello? My inbox is always open.</p>
+      <a class="contact-link" href="mailto:you@example.com">you@example.com</a>
+
+      <div class="social-links">
+        <a href="https://github.com" target="_blank">GitHub</a>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a href="https://twitter.com" target="_blank">Twitter / X</a>
+        <a href="https://dribbble.com" target="_blank">Dribbble</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; width:100%;">
+      <span>© 2025 Your Name</span>
+      <span>Built with care</span>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-triggered fade-in
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
 </html>
