@@ -9,15 +9,15 @@
   <style>
     /* ─── DESIGN SYSTEM ─── */
     :root {
-      --bg:        #08090c;
-      --surface:   #0f1117;
-      --border:    rgba(255,255,255,0.07);
-      --text:      #e8eaf0;
+      --bg:        #f5f6fa;
+      --surface:   #ffffff;
+      --border:    rgba(0,0,0,0.08);
+      --text:      #111318;
       --muted:     #6b7280;
-      --accent:    #00e5a0;       /* electric mint */
+      --accent:    #0a7cff;       /* vivid blue */
       --accent2:   #7b61ff;       /* violet */
-      --accent3:   #ff6b6b;       /* coral */
-      --accent4:   #ffd166;       /* amber */
+      --accent3:   #e8490f;       /* burnt orange */
+      --accent4:   #c08a00;       /* dark amber */
       --font-head: 'Syne', sans-serif;
       --font-body: 'DM Sans', sans-serif;
       --font-mono: 'DM Mono', monospace;
@@ -53,9 +53,9 @@
       inset: 0;
       z-index: 0;
       background:
-        radial-gradient(ellipse 60% 40% at 20% 20%, rgba(0,229,160,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 20% 20%, rgba(10,124,255,0.07) 0%, transparent 70%),
         radial-gradient(ellipse 50% 50% at 80% 80%, rgba(123,97,255,0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 60% 30%, rgba(255,107,107,0.04) 0%, transparent 70%);
+        radial-gradient(ellipse 40% 60% at 60% 30%, rgba(232,73,15,0.04) 0%, transparent 70%);
       animation: bgPulse 12s ease-in-out infinite alternate;
     }
     @keyframes bgPulse {
@@ -81,7 +81,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(8,9,12,0.7);
+      background: rgba(245,246,250,0.85);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
@@ -145,7 +145,7 @@
     }
     h1.hero-title .line2 {
       color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+      -webkit-text-stroke: 1px rgba(0,0,0,0.18);
     }
     h1.hero-title em {
       font-style: normal;
@@ -183,16 +183,16 @@
     }
     .btn-primary {
       background: var(--accent);
-      color: #08090c;
+      color: #ffffff;
       font-weight: 600;
     }
-    .btn-primary:hover { background: #00ffb0; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,229,160,0.3); }
+    .btn-primary:hover { background: #0066dd; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(10,124,255,0.25); }
     .btn-outline {
       background: transparent;
       color: var(--text);
       border: 1px solid var(--border);
     }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); }
+    .btn-outline:hover { border-color: rgba(0,0,0,0.25); background: rgba(0,0,0,0.04); }
 
     /* ─── SKILLS TICKER ─── */
     .ticker-wrapper {
@@ -333,19 +333,19 @@
       transition: opacity 0.3s;
       opacity: 0;
     }
-    .project-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.15); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+    .project-card:hover { transform: translateY(-4px); border-color: rgba(0,0,0,0.15); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
     .project-card:hover::before { opacity: 1; }
 
     /* Per-card accent colours */
-    .card-rag::before        { background: linear-gradient(90deg, var(--accent), #00b8ff); }
-    .card-banking::before    { background: linear-gradient(90deg, var(--accent2), #ff6bcd); }
-    .card-agentic::before    { background: linear-gradient(90deg, var(--accent3), #ffb347); }
+    .card-rag::before        { background: linear-gradient(90deg, var(--accent), #00aaff); }
+    .card-banking::before    { background: linear-gradient(90deg, var(--accent2), #cc6bff); }
+    .card-agentic::before    { background: linear-gradient(90deg, var(--accent3), #ff9a3c); }
     .card-ai-me::before      { background: linear-gradient(90deg, var(--accent4), var(--accent)); }
 
-    .card-rag:hover        { box-shadow: 0 20px 60px rgba(0,229,160,0.12); }
-    .card-banking:hover    { box-shadow: 0 20px 60px rgba(123,97,255,0.12); }
-    .card-agentic:hover    { box-shadow: 0 20px 60px rgba(255,107,107,0.12); }
-    .card-ai-me:hover      { box-shadow: 0 20px 60px rgba(255,209,102,0.12); }
+    .card-rag:hover        { box-shadow: 0 20px 60px rgba(10,124,255,0.1); }
+    .card-banking:hover    { box-shadow: 0 20px 60px rgba(123,97,255,0.1); }
+    .card-agentic:hover    { box-shadow: 0 20px 60px rgba(232,73,15,0.08); }
+    .card-ai-me:hover      { box-shadow: 0 20px 60px rgba(192,138,0,0.1); }
 
     .project-number {
       font-family: var(--font-mono);
@@ -459,7 +459,7 @@
       bottom: -40px; right: -40px;
       width: 200px; height: 200px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,229,160,0.12), transparent 70%);
+      background: radial-gradient(circle, rgba(10,124,255,0.08), transparent 70%);
       pointer-events: none;
     }
     .contact-box h2 {
@@ -738,8 +738,8 @@
         <h2>Let's build something.</h2>
         <p>Have an AI project in mind or want to collaborate? My inbox is open.</p>
         <div class="contact-links">
-          <a class="btn btn-primary" href="mailto:sandip.khangembam@gmail.com">
-            ✉ sandip.khangembam@gmail.com
+          <a class="btn btn-primary" href="/cdn-cgi/l/email-protection#6d1e0c0309041d4306050c030a08000f0c002d0a000c0401430e0200">
+            ✉ <span class="__cf_email__" data-cfemail="8ffceee1ebe6ffa1e4e7eee1e8eae2edeee2cfe8e2eee6e3a1ece0e2">[email&#160;protected]</span>
           </a>
           <a class="btn btn-outline" href="https://github.com/sandipkh" target="_blank">
             GitHub ↗
@@ -759,13 +759,5 @@
   </footer>
 
   <!-- Scroll reveal -->
-  <script>
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.12 }
-    );
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
-
-</body>
-</html>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    const observer = new Inte
